@@ -1,6 +1,6 @@
 package org.example;
 
- public class SharedQueue {
+public class SharedQueue {
      private static final int TAM_DEFAULT = 100;
      private int inicio, fim, qtde;
      private FluxData e[ ];
@@ -31,7 +31,7 @@ package org.example;
              this.qtde++;
          }
          else
-             System.out.println("Oveflow - Estouro de Fila");
+             System.out.println("Overflow - Estouro de Fila");
      }
 
      public FluxData dequeue() {
@@ -77,30 +77,20 @@ package org.example;
          int indiceNovo = (inicio + qtde) % e.length;
 
          StringBuilder sb = new StringBuilder();
-         sb.append("[Fila] quantidade: ")
-                 .append(qtde)
-                 .append(", capacidade: ")
-                 .append(e.length);
-         if (qtde != 0) {
-             sb.append(", primeiro: ")
-                     .append(front())
-                     .append(", último: ")
-                     .append(rear());
-         }
 
          sb.append("\nConteudo da Fila': [ ");
          if (qtde != 0) {
              if (indiceNovo <= inicio) {
                  for (int i = inicio; i < e.length; ++i)
-                     sb.append("[" + e[i] + "]");
+                     sb.append("[" + e[i] + "] ");
                  for (int i = 0; i < indiceNovo; ++i)
-                     sb.append("[" + e[i] + "]");
+                     sb.append("[" + e[i] + "] ");
              } else {
                  for (int i = inicio; i < indiceNovo; ++i)
-                     sb.append("[" + e[i] + "]");
+                     sb.append("[" + e[i] + "] ");
              }
          }
-         sb.append(" ]");
+         sb.append("]");
          return sb.toString();
      }
 }

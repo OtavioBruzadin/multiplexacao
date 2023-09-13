@@ -27,11 +27,11 @@ public class FluxDataQueue {
     public void enqueue(int e) {
         if (! isFull( )){
             this.e[this.fim++] = e;
-            this.fim = this.fim % this.e.length;
+            this.fim = fim % this.e.length;
             this.qtde++;
         }
         else
-            System.out.println("Oveflow - Estouro de Fila");
+            System.out.println("Overflow - Estouro de Fila");
     }
 
     public int dequeue() {
@@ -77,18 +77,7 @@ public class FluxDataQueue {
         int indiceNovo = (inicio + qtde) % e.length;
 
         StringBuilder sb = new StringBuilder();
-        sb.append("[Fila] quantidade: ")
-                .append(qtde)
-                .append(", capacidade: ")
-                .append(e.length);
-        if (qtde != 0) {
-            sb.append(", primeiro: ")
-                    .append(front())
-                    .append(", último: ")
-                    .append(rear());
-        }
-
-        sb.append("\nConteudo da Fila': [ ");
+        sb.append("\nConteúdo da Fila': [ ");
         if (qtde != 0) {
             if (indiceNovo <= inicio) {
                 for (int i = inicio; i < e.length; ++i)
